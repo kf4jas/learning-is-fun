@@ -2,7 +2,7 @@
 <html>
 	<!-- html header-->
 	<head>
-    <link rel="stylesheet" href="bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
 		<title>What is His Datibilty Score?</title>
 	</head>
 
@@ -110,7 +110,7 @@
       </div>
     <!-- Submit Button -->
     <div class="row col-lg-offset-3" >
-      <button class="btn btn-danger" onclick="callPhp()">Submit</button>
+      <button id="getdateresults" class="btn btn-danger">Submit</button>
 
     </div>
     </form>
@@ -123,17 +123,19 @@
 
   <script>
  //Function when form is submitted
-  function callPhp()
-  {
-    $.post('dateQuiz.php', $('form#myForm').serialize(), function(data) {
-        //$('#message').text(data);
-				document.getElementById("message").innerHTML = data;
-				//alert(data);
-
-      }
-   );
-
-  }
+    $(function(){
+	$("#getdateresults").on('click',function(e) {
+	    e.preventDefault();
+	    $.post('dateQuiz.php', $('form#myForm').serialize(), function(data) {
+		//$('#message').text(data);
+		//document.getElementById("message").innerHTML = data;
+		$("#message").html(data);
+	        //alert(data);
+	    });
+	    return false;
+	});
+    });
+  
 
   </script>
 
