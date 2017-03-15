@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<!-- html header-->
+	<head>
+    <link rel="stylesheet" href="bootstrap.min.css" media="screen">
+		<title>What is His Datibilty Score?</title>
+	</head>
+
+	<body>
+    <div class="col-lg-8 col-lg-offset-2">
+
+			<div class="row">
+				<div id="message"></div>
+      </div>
+
+	    <div class="row">
+        <img src="http://i63.tinypic.com/28irk8i.jpg" class="img-circle col-lg-offset-4" width="250" height="250"/>
+      </div>
+
+      <hr />
+      <form class="form-horizontal" id="myForm" method="post">
+        <!--Question 1-->
+        <div class="form-group">
+          <label for="herAge" class="col-lg-3 control-label">How old are you?</label>
+          <div class="col-lg-9">
+            <input type="number" class="form-control" name="herAge" placeholder="Her Age">
+          </div>
+        </div>
+
+      <!--Question 2-->
+      <div class="form-group">
+        <label for="hisAge" class="col-lg-3 control-label">How old is he?</label>
+        <div class="col-lg-9">
+          <input type="number" class="form-control" name="hisAge" placeholder="His Age">
+        </div>
+      </div>
+
+      <!--Question 3-->
+      <div class="form-group">
+        <label for="education" class="col-lg-3 control-label">What is his highest level of education?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="education">
+            <option></option>
+            <option value="1">No College Degree</option>
+            <option value="5">Four Year Degree</option>
+            <option value="10">Graduate Degree</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Question 4 -->
+      <div class="form-group">
+        <label for="education" class="col-lg-3 control-label">How well does he program?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="program">
+            <option></option>
+            <option value="0">No Programming Experience</option>
+            <option value="5">Average Programmer</option>
+            <option value="10">Excellent Programmer</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Question 5 -->
+      <div class="form-group">
+        <label for="firstDate" class="col-lg-3 control-label">Where did he take you on the first date?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="firstDate">
+            <option></option>
+            <option value="10">Dinner</option>
+            <option value="1">Bar</option>
+            <option value="10">Event</option>
+            <option value="1">Free Public Meeting</option>
+            <option value="-5">A House</option>
+          </select>
+        </div>
+      </div>
+      <!--Question 6 -->
+      <div class="form-group">
+        <label for="romance" class="col-lg-3 control-label">Which best describes his idea of a romantic evening?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="romance">
+            <option></option>
+            <option value="7">Dinner and a  Movie</option>
+            <option value="10">PluralSight and Chill</option>
+            <option value="1">"Hey baby, wanna come over?"</option>
+          </select>
+        </div>
+      </div>
+      <!--Question 7 -->
+      <div class="form-group">
+        <label for="doors" class="col-lg-3 control-label">Does he hold doors open for you?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="doors">
+            <option value="7">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Question 8 -->
+      <div class="form-group">
+        <label for="head" class="col-lg-3 control-label">Does he like giving head?</label>
+        <div class="col-lg-9">
+          <select class="form-control" name="head">
+            <option value="10">Yes</option>
+            <option value=".5">No</option>
+          </select>
+        </div>
+      </div>
+    <!-- Submit Button -->
+    <div class="row col-lg-offset-3" >
+      <button class="btn btn-danger" onclick="callPhp()">Submit</button>
+
+    </div>
+    </form>
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"> </script>
+
+  <script>
+ //Function when form is submitted
+  function callPhp()
+  {
+    $.post('dateQuiz.php', $('form#myForm').serialize(), function(data) {
+        //$('#message').text(data);
+				document.getElementById("message").innerHTML = data;
+				//alert(data);
+
+      }
+   );
+
+  }
+
+  </script>
+
+</body>
+</html>
